@@ -1,37 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { StyledButton } from "./StyledButton";
 import React from "react";
 import "../index.css";
 
-
 const Navbar = () => {
-
-
-    const handleClick = () => {
-    }
+    const nav = useNavigate();
+    const handleClick = () => {};
 
     return (
         <header>
-            <div className="nav-container">
+            <div className="flex justify-between items-center px-5 py-3">
                 <Link to="/taskboard">
-                    <h1 className="logo-main">S . I . M . P . L . E</h1>
+                    <h1 className="text-4xl">S . I . M . P . L . E</h1>
                 </Link>
-                <nav>
-                <div class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search.." className="search" />
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <div>
-                    <button to="/addtask">Add New</button>
-                </div>
-                <div>
-                    <span></span>
-                    <button onClick={handleClick}>Log out</button>
-                </div>
+                <nav className="flex gap-5">
+                    <StyledButton onClick={() => nav("/additem")}>
+                        Add New
+                    </StyledButton>
+                    <StyledButton onClick={handleClick}>Log out</StyledButton>
                 </nav>
             </div>
         </header>
-)}
+    );
+};
 
 export default Navbar;

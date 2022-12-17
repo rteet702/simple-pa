@@ -9,16 +9,16 @@
 body {
     @apply bg-neutral-200;
 }
-.logo-main {
+/* .logo-main {
     color: #333;
     text-decoration: none;
     font-family: "Poppins";
     cursor: pointer;
     margin-left: 10px;
     font-size: 30px;
-}
+} */
 /* NavBar */
-nav {
+/* nav {
     display: flex;
     align-items: center;
 }
@@ -43,10 +43,10 @@ nav button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+} */
 
 /* task details */
-.task-details {
+/* .task-details {
     width: 1400px;
     padding: 10px 20px;
     display: flex;
@@ -90,4 +90,4 @@ nav button {
     padding: 6px;
     border-radius: 30%;
     color: #333333;
-}
+} */
