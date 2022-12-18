@@ -2,10 +2,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { StyledButton } from "./StyledButton";
 import React from "react";
 import "../index.css";
+import axios from "axios";
 
 const Navbar = () => {
     const nav = useNavigate();
-    const handleClick = () => {};
+
+    const handleLogout = () => {
+        const server = process.env.SERVER || "http://localhost:8000";
+        axios
+            .get(`${server}/api/users/logout`, { withCredentials: true })
+            .then(() => {
+                nav("/");
+            });
+    };
 
     return (
         <header>
@@ -17,7 +26,7 @@ const Navbar = () => {
                     <StyledButton onClick={() => nav("/additem")}>
                         Add New
                     </StyledButton>
-                    <StyledButton onClick={handleClick}>Log out</StyledButton>
+                    <StyledButton onClick={handleLogout}>Log out</StyledButton>
                 </nav>
             </div>
         </header>

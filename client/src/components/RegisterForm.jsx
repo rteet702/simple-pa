@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RegisterForm = () => {
@@ -7,6 +8,8 @@ export const RegisterForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const nav = useNavigate();
 
     const handleSubmit = (e) => {
         const server = process.env.SERVER || "http://localhost:8000";
@@ -25,6 +28,7 @@ export const RegisterForm = () => {
             )
             .then((response) => {
                 console.log(response);
+                nav("/taskboard");
             })
             .catch((error) => {
                 console.error(error);

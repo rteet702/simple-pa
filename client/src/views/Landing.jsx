@@ -1,10 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm";
 import { RegisterForm } from "../components/RegisterForm";
 
 export const Landing = () => {
     const [showLogin, setShowLogin] = useState(true);
+    const nav = useNavigate();
+
+    useEffect(() => {
+        const server = process.env.SERVER || "http://localhost:8000";
+        axios
+            .get(`${server}/api/users`, { withCredentials: true })
+            .then((user) => {
+                nav("/taskboard");
+            });
+    }, []);
 
     const toggleLogin = () => {
         setShowLogin((prev) => {

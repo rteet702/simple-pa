@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const nav = useNavigate();
 
     const handleSubmit = (e) => {
         const server = process.env.SERVER || "http://localhost:8000";
@@ -19,6 +21,7 @@ export const LoginForm = () => {
             )
             .then((response) => {
                 console.log(response);
+                nav("/taskboard");
             })
             .catch((error) => {
                 console.error(error);
