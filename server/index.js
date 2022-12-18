@@ -20,7 +20,7 @@ app.use(
                 callback(new Error("Not allowed by CORS."));
             }
         },
-        methods: ["*"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
     })
 );
 app.use(cookieParser());
