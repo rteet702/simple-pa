@@ -1,15 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 export const RegisterForm = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleSubmit = (e) => {
+        const server = process.env.SERVER || "http://localhost:8000";
+        e.preventDefault();
+        axios
+            .post(
+                `${server}/api/users/register`,
+                {
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    confirmPassword,
+                },
+                { withCredentials: true }
+            )
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
     return (
         <>
             <h1 className="text-6xl text-center mb-5">Register</h1>
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 <div>
                     <input
                         type="text"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => {
+                            setFirstName(e.target.value);
+                        }}
                     />
                 </div>
 
@@ -18,6 +52,10 @@ export const RegisterForm = () => {
                         type="text"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => {
+                            setLastName(e.target.value);
+                        }}
                     />
                 </div>
 
@@ -26,6 +64,10 @@ export const RegisterForm = () => {
                         type="email"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Email"
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}
                     />
                 </div>
 
@@ -34,6 +76,10 @@ export const RegisterForm = () => {
                         type="password"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Password"
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                        }}
                     />
                 </div>
 
@@ -42,6 +88,10 @@ export const RegisterForm = () => {
                         type="password"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                        }}
                     />
                 </div>
 
