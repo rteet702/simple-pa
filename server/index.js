@@ -8,10 +8,19 @@ const app = express();
 require("dotenv").config();
 require("./config/jwt.config");
 
+const whitelist = ["http://localhost:3000", "https://simple.teets.dev"];
+
 app.use(
     cors({
         credentials: true,
-        origin: "https://simple.teets.dev",
+        origin: (origin, callback) => {
+            if (whitelist.indexOf(origin) !== -1) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS."));
+            }
+        },
+        methods: ["*"],
     })
 );
 app.use(cookieParser());
