@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 require("./routes/user.routes")(app);
+require("./routes/task.routes")(app);
 
 app.listen(port, () => {
     console.log(`Locked and loaded on port ${port}`);
