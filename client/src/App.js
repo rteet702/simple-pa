@@ -7,8 +7,8 @@ export const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/taskboard" element={<TaskBoard />} />
+                {/* <Route path="/" element={<Landing />} /> */}
+                <Route path="/" element={<TaskBoard />} />
             </Routes>
         </BrowserRouter>
     );

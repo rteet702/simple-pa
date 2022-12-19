@@ -9,23 +9,23 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function TaskBoard() {
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
 
-    useEffect(() => {
-        const server = process.env.REACT_APP_SERVER || "http://localhost:8000";
-        axios
-            .get(`${server}/api/users`, {
-                withCredentials: true,
-                headers: { Cookie: document.cookie },
-            })
-            .then((user) => {
-                console.log(user.data.user);
-                setUser(user.data.user);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     const server = process.env.REACT_APP_SERVER || "http://localhost:8000";
+    //     axios
+    //         .get(`${server}/api/users`, {
+    //             withCredentials: true,
+    //             headers: { Cookie: document.cookie },
+    //         })
+    //         .then((user) => {
+    //             console.log(user.data.user);
+    //             setUser(user.data.user);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }, []);
 
     return (
         <div>
