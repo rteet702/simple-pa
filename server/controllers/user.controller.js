@@ -91,7 +91,7 @@ module.exports = {
                 secure: true,
                 sameSite: "none",
             })
-            .json({ message: "Succesfully logged in" });
+            .json({ message: "Succesfully logged in", token: userToken });
     },
     logout: (request, response) => {
         response.clearCookie("userToken");

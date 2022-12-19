@@ -21,6 +21,7 @@ export const LoginForm = () => {
             )
             .then((response) => {
                 console.log(response);
+                document.cookie = response.data.token;
                 nav("/taskboard");
             })
             .catch((error) => {
