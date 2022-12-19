@@ -47,7 +47,11 @@ module.exports = {
 
         return response
             .status(201)
-            .cookie("userToken", userToken, { httpOnly: true })
+            .cookie("userToken", userToken, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
+            })
             .json({ msg: "User created successfully.", user: newUser });
     },
     login: async (request, response) => {
@@ -82,7 +86,11 @@ module.exports = {
 
         return response
             .status(200)
-            .cookie("userToken", userToken, { httpOnly: true })
+            .cookie("userToken", userToken, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
+            })
             .json({ message: "Succesfully logged in" });
     },
     logout: (request, response) => {
