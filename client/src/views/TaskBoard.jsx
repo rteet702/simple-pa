@@ -9,6 +9,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function TaskBoard() {
+    const [modalVisible, setModalVisibile] = useState(false);
+
+    const toggleModal = (e) => {
+        e.preventDefault();
+        setModalVisibile((prev) => !prev);
+    };
+
     // const [user, setUser] = useState({});
 
     // useEffect(() => {
@@ -29,8 +36,8 @@ function TaskBoard() {
 
     return (
         <div>
-            <Navbar />
-            <TaskDetails />
+            <Navbar toggle={toggleModal} />
+            <TaskDetails toggle={toggleModal} modalVisible={modalVisible} />
         </div>
     );
 }
