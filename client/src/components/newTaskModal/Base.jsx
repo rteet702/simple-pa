@@ -1,7 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import { StyledButton } from "../StyledButton";
 
 export const Base = ({ toggle }) => {
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState("");
+
     return (
         <div className="absolute top-0 right-0 left-0 bottom-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
             <div className="bg-neutral-100 p-5 shadow-lg rounded-lg text-xl relative">
@@ -11,17 +16,22 @@ export const Base = ({ toggle }) => {
                         type="text"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Task Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <textarea
                         cols="30"
                         rows="10"
                         className="resize-none focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
                         placeholder="Task Description..."
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
                     ></textarea>
                     <input
                         type="date"
                         id="due"
                         className="focus:outline-none rounded-lg px-3 py-2 text-xl shadow-sm focus:shadow-lg transition-shadow"
+                        onChange={(e) => setDate(e.target.valueAsDate)}
                     />
                     <StyledButton theme="amber">Submit</StyledButton>
                     <StyledButton theme="red" onClick={toggle}>
