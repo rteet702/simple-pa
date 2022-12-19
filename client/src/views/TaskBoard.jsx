@@ -14,7 +14,10 @@ function TaskBoard() {
     useEffect(() => {
         const server = process.env.REACT_APP_SERVER || "http://localhost:8000";
         axios
-            .get(`${server}/api/users`, { withCredentials: true })
+            .get(`${server}/api/users`, {
+                withCredentials: true,
+                headers: { Cookie: document.cookie },
+            })
             .then((user) => {
                 console.log(user.data.user);
                 setUser(user.data.user);
