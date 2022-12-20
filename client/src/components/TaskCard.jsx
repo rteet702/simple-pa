@@ -3,7 +3,7 @@ import React from "react";
 import { StyledButton } from "./StyledButton";
 import { AlertIcon } from "@primer/octicons-react";
 
-export const TaskCard = ({ task, setTasks }) => {
+export const TaskCard = ({ task, setTasks, toggle, ...rest }) => {
     const calculateDateDiff = () => {
         const date = new Date(task.dueAt);
         const today = new Date();
@@ -29,7 +29,7 @@ export const TaskCard = ({ task, setTasks }) => {
         } else if (days > 0) {
             return (
                 <div className="flex gap-5">
-                    <p className>{date.toLocaleDateString()}</p>
+                    <p>{date.toLocaleDateString()}</p>
                 </div>
             );
         } else {
@@ -62,14 +62,20 @@ export const TaskCard = ({ task, setTasks }) => {
     };
 
     return (
-        <div className="w-full flex bg-white px-8 py-6 items-center  text-xl rounded-lg drop-shadow-sm hover:drop-shadow-lg transition-all cursor-pointer">
+        <div
+            className="w-full flex bg-white px-8 py-6 items-center  text-xl rounded-lg drop-shadow-sm hover:drop-shadow-lg transition-all cursor-pointer"
+            {...rest}
+        >
             <h4 className="text-2xl flex-1">{task.title}</h4>
             {calculateDateDiff()}
             <div className="flex gap-5 flex-1 justify-end">
+                <StyledButton theme="amber" onClick={toggle}>
+                    View
+                </StyledButton>
+                <StyledButton theme="cyan">Update</StyledButton>
                 <StyledButton theme="red" onClick={handleDelete}>
                     Delete
                 </StyledButton>
-                <StyledButton theme="cyan">Update</StyledButton>
             </div>
         </div>
     );
