@@ -22,7 +22,7 @@ export const TaskCard = ({ task, setTasks }) => {
     };
 
     return (
-        <div className="w-full flex bg-white px-8 py-6 items-center  text-xl rounded-lg drop-shadow-sm hover:py-8 transition-all cursor-pointer">
+        <div className="w-full flex bg-white px-8 py-6 items-center  text-xl rounded-lg drop-shadow-sm hover:drop-shadow-lg transition-all cursor-pointer">
             <h4 className="text-2xl flex-1">{task.title}</h4>
             {today < date ? (
                 <p className="text-right flex-1">

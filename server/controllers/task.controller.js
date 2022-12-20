@@ -5,6 +5,10 @@ module.exports = {
         const prisma = new PrismaClient();
         const { title, description, dueAt } = request.body;
 
+        if (!title || !description || !dueAt) {
+            return response.status(400).json({ error: "All fields required!" });
+        }
+
         const newTask = await prisma.task.create({
             data: {
                 title,
