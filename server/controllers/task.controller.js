@@ -18,7 +18,11 @@ module.exports = {
     getAll: async (request, response) => {
         const prisma = new PrismaClient();
 
-        const tasks = await prisma.task.findMany({});
+        const tasks = await prisma.task.findMany({
+            orderBy: {
+                dueAt: "asc",
+            },
+        });
 
         console.log(tasks);
 
