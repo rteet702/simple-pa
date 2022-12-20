@@ -5,11 +5,11 @@ import "../index.css";
 import Navbar from "../components/NavBar";
 import TaskDetails from "../components/TaskDetails";
 import axios from "axios";
-import { useEffect } from "react";
 import { useState } from "react";
 
 function TaskBoard() {
     const [modalVisible, setModalVisibile] = useState(false);
+    const [tasks, setTasks] = useState([]);
 
     const toggleModal = (e) => {
         e.preventDefault();
@@ -37,7 +37,12 @@ function TaskBoard() {
     return (
         <div>
             <Navbar toggle={toggleModal} />
-            <TaskDetails toggle={toggleModal} modalVisible={modalVisible} />
+            <TaskDetails
+                toggle={toggleModal}
+                modalVisible={modalVisible}
+                tasks={tasks}
+                setTasks={setTasks}
+            />
         </div>
     );
 }

@@ -5,9 +5,7 @@ import { useState } from "react";
 import { Base } from "./newTaskModal/Base";
 import { TaskCard } from "./TaskCard";
 
-const TaskDetails = ({ toggle, modalVisible }) => {
-    const [tasks, setTasks] = useState([]);
-
+const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
     useEffect(() => {
         const server = process.env.REACT_APP_SERVER || "http://localhost:8000";
         axios
