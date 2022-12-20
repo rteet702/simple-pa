@@ -24,4 +24,19 @@ module.exports = {
 
         return response.status(200).json({ tasks: tasks });
     },
+    delete: async (request, response) => {
+        const prisma = new PrismaClient();
+
+        const { id } = request.params;
+
+        await prisma.task.delete({
+            where: {
+                id,
+            },
+        });
+
+        return response
+            .status(204)
+            .json({ message: "Successfully deleted task: " + id });
+    },
 };

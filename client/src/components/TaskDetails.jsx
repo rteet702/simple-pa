@@ -25,7 +25,9 @@ const TaskDetails = ({ toggle, modalVisible }) => {
             {modalVisible && <Base toggle={toggle} />}
             <div className="flex px-5 pt-5 flex-col gap-5 w-9/12 mr-0 ml-auto">
                 {tasks.map((task, index) => {
-                    return <TaskCard key={index} task={task} />;
+                    return (
+                        <TaskCard key={index} task={task} setTasks={setTasks} />
+                    );
                 })}
             </div>
         </>
