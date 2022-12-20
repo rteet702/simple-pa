@@ -12,7 +12,6 @@ function TaskBoard() {
     const [tasks, setTasks] = useState([]);
 
     const toggleModal = (e) => {
-        e.preventDefault();
         setModalVisibile((prev) => !prev);
     };
 
@@ -36,7 +35,7 @@ function TaskBoard() {
 
     return (
         <div>
-            <Navbar toggle={toggleModal} />
+            <Navbar toggle={toggleModal} setTasks={setTasks} />
             <TaskDetails
                 toggle={toggleModal}
                 modalVisible={modalVisible}

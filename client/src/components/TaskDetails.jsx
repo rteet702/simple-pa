@@ -7,6 +7,10 @@ import { TaskCard } from "./TaskCard";
 
 const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
     useEffect(() => {
+        fetchTasks();
+    }, []);
+
+    const fetchTasks = () => {
         const server = process.env.REACT_APP_SERVER || "http://localhost:8000";
         axios
             .get(`${server}/api/tasks`)
@@ -16,11 +20,11 @@ const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
             .catch((error) => {
                 console.error(error);
             });
-    }, []);
+    };
 
     return (
         <>
-            {modalVisible && <Base toggle={toggle} />}
+            {modalVisible && <Base toggle={toggle} fetch={fetchTasks} />}
             <div className="flex px-5 pt-5 flex-col gap-5 w-9/12 mr-0 ml-auto">
                 {tasks.map((task, index) => {
                     return (

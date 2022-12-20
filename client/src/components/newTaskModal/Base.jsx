@@ -1,15 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../StyledButton";
 
-export const Base = ({ toggle }) => {
+export const Base = ({ toggle, fetch }) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [date, setDate] = useState("");
-
-    const nav = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +20,8 @@ export const Base = ({ toggle }) => {
             })
             .then((response) => {
                 console.log(response);
-                nav("/");
+                fetch();
+                toggle();
             })
             .catch((error) => console.error(error));
     };
