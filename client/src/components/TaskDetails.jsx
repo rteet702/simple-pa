@@ -4,11 +4,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Base } from "./newTaskModal/Base";
 import { BaseDetails } from "./taskDetails/BaseDetails";
+import { BaseUpdate } from "./updateTaskModal/BaseUpdate";
 import { TaskCard } from "./TaskCard";
 
 const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
     const [selectedTask, setSelectedTask] = useState({});
     const [detailsVisibility, setDetailsVisibility] = useState(false);
+    const [updateVisibility, setUpdateVisibility] = useState(false);
 
     useEffect(() => {
         fetchTasks();
@@ -26,8 +28,12 @@ const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
             });
     };
 
-    const toggleVisibility = () => {
+    const toggleDetailVisibility = () => {
         setDetailsVisibility((prev) => !prev);
+    };
+
+    const toggleUpdateVisibility = () => {
+        setUpdateVisibility((prev) => !prev);
     };
 
     return (
@@ -36,7 +42,14 @@ const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
             {detailsVisibility && (
                 <BaseDetails
                     selected={selectedTask}
-                    toggle={toggleVisibility}
+                    toggle={toggleDetailVisibility}
+                />
+            )}
+            {updateVisibility && (
+                <BaseUpdate
+                    selected={selectedTask}
+                    toggle={toggleUpdateVisibility}
+                    fetch={fetchTasks}
                 />
             )}
             <div className="flex px-5 pt-5 flex-col gap-5 w-9/12 mr-0 ml-auto">
@@ -46,10 +59,9 @@ const TaskDetails = ({ toggle, modalVisible, tasks, setTasks }) => {
                             key={index}
                             task={task}
                             setTasks={setTasks}
-                            onClick={() => {
-                                setSelectedTask(task);
-                            }}
-                            toggle={toggleVisibility}
+                            toggle={toggleDetailVisibility}
+                            toggleUpdate={toggleUpdateVisibility}
+                            selectTask={setSelectedTask}
                         />
                     );
                 })}

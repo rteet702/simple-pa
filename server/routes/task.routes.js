@@ -4,4 +4,5 @@ module.exports = (app) => {
     app.post("/api/tasks", taskController.create);
     app.get("/api/tasks", taskController.getAll);
     app.delete("/api/tasks/:id", taskController.delete);
+    app.put("/api/tasks/:id", taskController.update);
 };

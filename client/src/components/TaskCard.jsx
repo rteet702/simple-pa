@@ -3,7 +3,14 @@ import React from "react";
 import { StyledButton } from "./StyledButton";
 import { AlertIcon } from "@primer/octicons-react";
 
-export const TaskCard = ({ task, setTasks, toggle, ...rest }) => {
+export const TaskCard = ({
+    task,
+    setTasks,
+    toggle,
+    toggleUpdate,
+    selectTask,
+    ...rest
+}) => {
     const calculateDateDiff = () => {
         const date = new Date(task.dueAt);
         const today = new Date();
@@ -69,10 +76,24 @@ export const TaskCard = ({ task, setTasks, toggle, ...rest }) => {
             <h4 className="text-2xl flex-1">{task.title}</h4>
             {calculateDateDiff()}
             <div className="flex gap-5 flex-1 justify-end">
-                <StyledButton theme="amber" onClick={toggle}>
+                <StyledButton
+                    theme="amber"
+                    onClick={() => {
+                        selectTask(task);
+                        toggle();
+                    }}
+                >
                     View
                 </StyledButton>
-                <StyledButton theme="cyan">Update</StyledButton>
+                <StyledButton
+                    theme="cyan"
+                    onClick={() => {
+                        selectTask(task);
+                        toggleUpdate();
+                    }}
+                >
+                    Update
+                </StyledButton>
                 <StyledButton theme="red" onClick={handleDelete}>
                     Delete
                 </StyledButton>
