@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "./styledComponents/StyledButton";
 import React from "react";
 import "../index.css";
 import axios from "axios";

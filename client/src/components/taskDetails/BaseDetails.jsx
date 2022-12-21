@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../styledComponents/StyledButton";
 
 export const BaseDetails = ({ selected, toggle }) => {
     return (

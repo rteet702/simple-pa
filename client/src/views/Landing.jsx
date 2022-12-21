@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginForm } from "../components/LoginForm";
-import { RegisterForm } from "../components/RegisterForm";
+import { LoginForm } from "../components/login-and-reg/LoginForm";
+import { RegisterForm } from "../components/login-and-reg/RegisterForm";
 
 export const Landing = () => {
     const [showLogin, setShowLogin] = useState(true);

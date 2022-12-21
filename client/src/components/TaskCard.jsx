@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "./styledComponents/StyledButton";
 import { AlertIcon } from "@primer/octicons-react";
 
 export const TaskCard = ({

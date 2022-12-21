@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../styledComponents/StyledButton";
 
 export const BaseUpdate = ({ toggle, fetch, selected }) => {
     const [name, setName] = useState(selected.title);
