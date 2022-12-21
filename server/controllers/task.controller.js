@@ -5,6 +5,10 @@ module.exports = {
         const prisma = new PrismaClient();
         const { title, description, dueAt } = request.body;
 
+        // dueAt adjustment
+        const fixedDueAt = new Date(dueAt);
+        fixedDueAt.setHours(fixedDueAt.getHours() + 16);
+
         if (!title || !description || !dueAt) {
             return response.status(400).json({ error: "All fields required!" });
         }
@@ -13,7 +17,7 @@ module.exports = {
             data: {
                 title,
                 description,
-                dueAt,
+                dueAt: fixedDueAt,
             },
         });
 
