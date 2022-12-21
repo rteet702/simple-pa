@@ -7,13 +7,13 @@
 ## Features ( MVP )
 
 -   [ ] Login and Registration
--   [ ] Basic CRUD functionality, including:
+-   [x] Basic CRUD functionality, including:
     -   Creating a task-item.
     -   Seeing a board of all task-items.
     -   Updating the status of a task-item. [ Complete, In Progress, Waiting ]
     -   Deleting a task-item.
--   [ ] Database for storing all user accounts and their associated task-items. ( Possibly SQL? )
--   [ ] Huge emphasis on interactivity. ( Animations, Transitions, Etc )
+-   [x] Database for storing all user accounts and their associated task-items. ( Possibly SQL? )
+-   [x] Huge emphasis on interactivity. ( Animations, Transitions, Etc )
 -   [ ] Customizable color theme. [ Accent Color, Light vs Dark ]
 
 ---
