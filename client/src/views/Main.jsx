@@ -7,7 +7,7 @@ export const Main = () => {
 
     return (
         <div className="h-screen flex items-center justify-center">
-            <div className="p-5 bg-white rounded-lg shadow-lg flex flex-col gap-3">
+            <div className="p-5 bg-white rounded-lg shadow-lg flex flex-col gap-5">
                 <h1 className="text-5xl text-center">
                     Welcome to{" "}
                     <span className="text-6xl text-amber-300 tracking-widest">
