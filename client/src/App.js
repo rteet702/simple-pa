@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Landing } from "./views/Landing";
+import { Main } from "./views/Main";
 import TaskBoard from "./views/TaskBoard";
 
 export const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                {/* <Route path="/" element={<Landing />} /> */}
-                <Route path="/" element={<TaskBoard />} />
+                <Route path="/" element={<Main />} />
+                <Route path="/taskboard" element={<TaskBoard />} />
             </Routes>
         </BrowserRouter>
     );
